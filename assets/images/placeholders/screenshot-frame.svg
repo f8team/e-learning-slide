@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Screenshot placeholder frame</title>
+  <desc id="desc">Neutral browser frame placeholder for future product screenshots.</desc>
+  <rect width="1200" height="760" rx="28" fill="#ffffff"/>
+  <rect width="1200" height="58" rx="28" fill="#f4f8f6"/>
+  <circle cx="36" cy="29" r="10" fill="#cfd9d5"/>
+  <circle cx="68" cy="29" r="10" fill="#cfd9d5"/>
+  <circle cx="100" cy="29" r="10" fill="#cfd9d5"/>
+  <rect x="72" y="136" width="360" height="28" rx="14" fill="#d8e0dd"/>
+  <rect x="72" y="204" width="520" height="18" rx="9" fill="#d8e0dd"/>
+  <rect x="72" y="250" width="420" height="18" rx="9" fill="#d8e0dd"/>
+  <rect x="72" y="336" width="300" height="220" rx="22" fill="#edf2f0"/>
+  <rect x="420" y="336" width="300" height="220" rx="22" fill="#edf2f0"/>
+  <rect x="768" y="336" width="300" height="220" rx="22" fill="#edf2f0"/>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 960" role="img" aria-labelledby="title desc">
+  <title id="title">Online learning platform ecosystem</title>
+  <desc id="desc">Abstract illustration of learning, teaching, practice, community, certificate, and analytics panels.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fcfb"/>
+      <stop offset="1" stop-color="#eef5f3"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1ca48c"/>
+      <stop offset="1" stop-color="#2f63c7"/>
+    </linearGradient>
+    <filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#172622" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="960" rx="48" fill="url(#bg)"/>
+  <path d="M246 444 C348 276 505 210 636 280 C804 371 804 532 668 638 C520 752 332 686 246 444Z" fill="#e0f2ee"/>
+  <path d="M686 226 C820 146 986 220 1002 372 C1018 526 878 636 728 584 C582 533 552 306 686 226Z" fill="#eaf0ff"/>
+  <g filter="url(#shadow)">
+    <rect x="120" y="156" width="350" height="226" rx="22" fill="#ffffff"/>
+    <rect x="160" y="196" width="186" height="22" rx="11" fill="#168875"/>
+    <rect x="160" y="244" width="250" height="14" rx="7" fill="#d8e0dd"/>
+    <rect x="160" y="276" width="210" height="14" rx="7" fill="#d8e0dd"/>
+    <circle cx="397" cy="300" r="44" fill="#e0f2ee"/>
+    <path d="M380 286 L422 302 L380 318Z" fill="#168875"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="718" y="132" width="300" height="238" rx="22" fill="#ffffff"/>
+    <rect x="762" y="178" width="96" height="96" rx="18" fill="#edf4ff"/>
+    <path d="M786 238 C806 202 842 202 862 238" fill="none" stroke="#2f63c7" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="824" cy="208" r="20" fill="#2f63c7"/>
+    <rect x="884" y="186" width="84" height="14" rx="7" fill="#d8e0dd"/>
+    <rect x="884" y="224" width="62" height="14" rx="7" fill="#d8e0dd"/>
+    <rect x="762" y="304" width="206" height="16" rx="8" fill="#cfe6df"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="424" y="332" width="360" height="266" rx="28" fill="#16201d"/>
+    <rect x="468" y="378" width="272" height="152" rx="18" fill="#22342f"/>
+    <path d="M580 420 L650 454 L580 488Z" fill="#ffffff"/>
+    <rect x="468" y="556" width="194" height="16" rx="8" fill="#5fd2bd"/>
+    <rect x="680" y="556" width="60" height="16" rx="8" fill="#57716a"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="142" y="538" width="292" height="250" rx="22" fill="#ffffff"/>
+    <rect x="184" y="584" width="210" height="16" rx="8" fill="#d8e0dd"/>
+    <rect x="184" y="628" width="170" height="16" rx="8" fill="#d8e0dd"/>
+    <rect x="184" y="684" width="70" height="70" rx="16" fill="#fff3dd"/>
+    <rect x="278" y="684" width="70" height="70" rx="16" fill="#eaf0ff"/>
+    <rect x="372" y="684" width="22" height="70" rx="11" fill="#e0f2ee"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="786" y="518" width="300" height="268" rx="22" fill="#ffffff"/>
+    <path d="M842 690 L842 624" stroke="#168875" stroke-width="24" stroke-linecap="round"/>
+    <path d="M914 690 L914 580" stroke="#2f63c7" stroke-width="24" stroke-linecap="round"/>
+    <path d="M986 690 L986 646" stroke="#c97f1a" stroke-width="24" stroke-linecap="round"/>
+    <path d="M830 724 L1002 724" stroke="#d8e0dd" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="1018" cy="588" r="42" fill="#e0f2ee"/>
+    <path d="M999 588 L1012 602 L1038 570" fill="none" stroke="#168875" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <path d="M470 274 C530 260 586 270 638 320" fill="none" stroke="#168875" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 26"/>
+  <path d="M786 390 C736 408 704 432 680 470" fill="none" stroke="#2f63c7" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 26"/>
+  <path d="M428 608 C484 646 548 654 612 620" fill="none" stroke="#c97f1a" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 26"/>
+  <path d="M778 638 C718 652 668 632 624 592" fill="none" stroke="#168875" stroke-width="12" stroke-linecap="round" stroke-dasharray="2 26"/>
+</svg>

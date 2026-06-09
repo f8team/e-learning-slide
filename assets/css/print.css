@@ -1,0 +1,56 @@
+@page {
+  size: 16in 9in;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    width: 16in;
+    min-width: 16in;
+    margin: 0;
+    padding: 0;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-toolbar,
+  .deck-nav,
+  .progress {
+    display: none !important;
+  }
+
+  .print-page {
+    padding: 0;
+  }
+
+  .deck-print {
+    display: block;
+    width: 16in;
+    margin: 0;
+    padding: 0;
+  }
+
+  .deck-print .slide-frame {
+    width: 16in;
+    height: 9in;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .deck-print .slide-frame:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  .visual-figure img,
+  .screenshot-placeholder,
+  .feature-item,
+  .journey-list li {
+    break-inside: avoid;
+  }
+}

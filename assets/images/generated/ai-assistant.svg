@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 960" role="img" aria-labelledby="title desc">
+  <title id="title">AI assistant for content creation</title>
+  <desc id="desc">Abstract visual of an instructor workspace with AI suggestions turning lessons into quizzes and study cards.</desc>
+  <defs>
+    <filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#172622" flood-opacity="0.14"/>
+    </filter>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f3f7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="960" rx="48" fill="#f8fcfb"/>
+  <path d="M232 250 C340 118 548 116 650 250 C760 396 672 618 474 632 C276 646 124 382 232 250Z" fill="#f0edff"/>
+  <path d="M658 320 C770 174 990 218 1018 392 C1046 566 872 706 706 620 C560 544 552 456 658 320Z" fill="#e0f2ee"/>
+  <g filter="url(#shadow)">
+    <rect x="126" y="202" width="484" height="564" rx="28" fill="#ffffff"/>
+    <rect x="182" y="260" width="244" height="22" rx="11" fill="#7060bd"/>
+    <rect x="182" y="328" width="350" height="16" rx="8" fill="#d8e0dd"/>
+    <rect x="182" y="372" width="294" height="16" rx="8" fill="#d8e0dd"/>
+    <rect x="182" y="444" width="356" height="104" rx="18" fill="#f5f7f6"/>
+    <rect x="214" y="480" width="170" height="14" rx="7" fill="#c6d1cd"/>
+    <rect x="214" y="512" width="250" height="14" rx="7" fill="#c6d1cd"/>
+    <rect x="182" y="594" width="150" height="72" rx="18" fill="#e0f2ee"/>
+    <rect x="356" y="594" width="150" height="72" rx="18" fill="#eaf0ff"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="682" y="188" width="390" height="584" rx="30" fill="url(#panel)"/>
+    <circle cx="877" cy="286" r="70" fill="#7060bd"/>
+    <path d="M840 286 L868 314 L916 254" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="744" y="406" width="266" height="18" rx="9" fill="#c9c4ee"/>
+    <rect x="744" y="456" width="216" height="18" rx="9" fill="#d8e0dd"/>
+    <rect x="744" y="528" width="110" height="104" rx="18" fill="#ffffff"/>
+    <rect x="880" y="528" width="110" height="104" rx="18" fill="#ffffff"/>
+    <rect x="744" y="672" width="246" height="18" rx="9" fill="#168875"/>
+  </g>
+  <path d="M610 424 C640 402 664 394 706 394" fill="none" stroke="#7060bd" stroke-width="14" stroke-linecap="round" stroke-dasharray="2 26"/>
+  <path d="M608 570 C650 602 674 614 724 618" fill="none" stroke="#168875" stroke-width="14" stroke-linecap="round" stroke-dasharray="2 26"/>
+</svg>

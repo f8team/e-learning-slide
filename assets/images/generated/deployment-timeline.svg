@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 960" role="img" aria-labelledby="title desc">
+  <title id="title">Deployment timeline</title>
+  <desc id="desc">Abstract visual showing a fast path from demo to launch and growth.</desc>
+  <defs>
+    <filter id="shadow" width="140%" height="140%" x="-20%" y="-20%">
+      <feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#172622" flood-opacity="0.13"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="960" rx="48" fill="#f8fcfb"/>
+  <path d="M174 510 C310 260 570 186 790 282 C940 348 1010 478 1036 650" fill="none" stroke="#d8e0dd" stroke-width="34" stroke-linecap="round"/>
+  <path d="M174 510 C310 260 570 186 790 282" fill="none" stroke="#168875" stroke-width="34" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <circle cx="206" cy="464" r="86" fill="#ffffff"/>
+    <rect x="168" y="430" width="76" height="68" rx="14" fill="#e0f2ee"/>
+    <path d="M184 464 L202 482 L232 444" fill="none" stroke="#168875" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="458" cy="300" r="86" fill="#ffffff"/>
+    <rect x="420" y="266" width="76" height="68" rx="14" fill="#eaf0ff"/>
+    <circle cx="458" cy="300" r="24" fill="#2f63c7"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="742" cy="270" r="86" fill="#ffffff"/>
+    <rect x="704" y="236" width="76" height="68" rx="14" fill="#fff3dd"/>
+    <path d="M724 280 L738 294 L764 262" fill="none" stroke="#c97f1a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <circle cx="996" cy="646" r="86" fill="#ffffff"/>
+    <rect x="954" y="600" width="84" height="92" rx="16" fill="#e0f2ee"/>
+    <path d="M976 660 L996 630 L1016 660" fill="none" stroke="#168875" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="238" y="636" width="708" height="142" rx="28" fill="#ffffff"/>
+    <rect x="296" y="686" width="124" height="16" rx="8" fill="#168875"/>
+    <rect x="464" y="686" width="124" height="16" rx="8" fill="#2f63c7"/>
+    <rect x="632" y="686" width="124" height="16" rx="8" fill="#c97f1a"/>
+    <rect x="800" y="686" width="86" height="16" rx="8" fill="#5f8f3f"/>
+    <rect x="296" y="730" width="590" height="14" rx="7" fill="#d8e0dd"/>
+  </g>
+</svg>
