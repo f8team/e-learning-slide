@@ -459,6 +459,8 @@ html[lang="my"] .slide-layout-journey .slide-copy h1 {
 }
 
 .visual-figure {
+  --image-ratio: 1.1875;
+  --image-max-width: 700px;
   position: relative;
   display: grid;
   width: 100%;
@@ -466,12 +468,10 @@ html[lang="my"] .slide-layout-journey .slide-copy h1 {
   margin: 0;
 }
 
-.visual-figure img {
-  display: block;
-  width: 100%;
-  max-height: 560px;
-  aspect-ratio: 16 / 11.2;
-  object-fit: contain;
+.visual-stage {
+  width: min(100%, var(--image-max-width));
+  aspect-ratio: var(--image-ratio);
+  overflow: hidden;
   border: 1px solid var(--stage-border);
   border-radius: 14px;
   background:
@@ -480,17 +480,41 @@ html[lang="my"] .slide-layout-journey .slide-copy h1 {
   box-shadow: var(--stage-shadow);
 }
 
+.visual-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  box-shadow: none;
+}
+
 .slide-layout-cover .visual-figure img,
 .slide-layout-closing .visual-figure img,
 .slide-has-illustration .visual-figure img {
-  max-height: 590px;
+  max-height: none;
+}
+
+.slide-has-illustration .visual-stage {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.slide-has-illustration .visual-figure img {
+  filter: drop-shadow(0 24px 56px rgba(23, 38, 34, 0.14));
 }
 
 .screenshot-figure {
-  width: min(100%, 760px);
+  --image-ratio: 1.6;
+  --image-max-width: 760px;
+}
+
+.screenshot-figure .visual-stage {
   border: 1px solid color-mix(in srgb, var(--tone) 18%, var(--stage-border));
   border-radius: 18px;
-  padding: 14px;
   background:
     linear-gradient(135deg, rgba(255, 255, 255, 0.92), color-mix(in srgb, var(--tone) 7%, #ffffff)),
     #ffffff;
@@ -499,10 +523,9 @@ html[lang="my"] .slide-layout-journey .slide-copy h1 {
 
 .screenshot-figure img {
   width: 100%;
-  max-height: 570px;
-  aspect-ratio: auto;
+  height: 100%;
   border: 0;
-  border-radius: 10px;
+  border-radius: inherit;
   background: transparent;
   object-fit: contain;
   object-position: center;
@@ -516,6 +539,10 @@ html[lang="my"] .slide-layout-journey .slide-copy h1 {
   font-weight: 800;
   text-align: center;
   opacity: 0.78;
+}
+
+.visual-figure.is-ratio-ready .visual-stage {
+  width: min(100%, var(--image-max-width));
 }
 
 .screenshot-placeholder {

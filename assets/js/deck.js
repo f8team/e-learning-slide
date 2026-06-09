@@ -111,7 +111,9 @@
       const displayClass = visual.display ? `visual-display-${escapeHtml(visual.display)}` : "";
       return `
         <figure class="visual-figure ${visual.display === "screenshot" ? "screenshot-figure" : ""} ${displayClass}">
-          <img src="${escapeHtml(resolveAsset(visual.src))}" alt="${escapeHtml(visual.alt || "")}" />
+          <div class="visual-stage">
+            <img data-visual-image src="${escapeHtml(resolveAsset(visual.src))}" alt="${escapeHtml(visual.alt || "")}" />
+          </div>
           ${visual.caption ? `<figcaption>${escapeHtml(visual.caption)}</figcaption>` : ""}
         </figure>
       `;
@@ -274,6 +276,32 @@
     printDeck.innerHTML = deck.slides.map((slide, index) => renderSlide(slide, index)).join("");
   };
 
+  const fitVisualStages = () => {
+    const getMaxHeight = (figure) => {
+      if (figure.classList.contains("screenshot-figure")) return 570;
+      if (figure.closest(".slide-layout-cover, .slide-layout-closing, .slide-has-illustration")) return 590;
+      return 560;
+    };
+
+    document.querySelectorAll(".visual-figure img").forEach((image) => {
+      const applyRatio = () => {
+        const figure = image.closest(".visual-figure");
+        if (!figure || !image.naturalWidth || !image.naturalHeight) return;
+        const ratio = image.naturalWidth / image.naturalHeight;
+        const maxHeight = getMaxHeight(figure);
+        figure.style.setProperty("--image-ratio", String(ratio));
+        figure.style.setProperty("--image-max-width", `${Math.round(maxHeight * ratio)}px`);
+        figure.classList.add("is-ratio-ready");
+      };
+
+      if (image.complete) {
+        window.requestAnimationFrame(applyRatio);
+      } else {
+        image.addEventListener("load", applyRatio, { once: true });
+      }
+    });
+  };
+
   const updateSlideScale = () => {
     if (!body.classList.contains("single-slide")) return;
     const horizontalGutter = window.innerWidth <= 980 ? 28 : 56;
@@ -289,22 +317,59 @@
     if (!body.classList.contains("single-slide")) return;
 
     document.addEventListener("keydown", (event) => {
-      if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+      if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+      const activeElement = document.activeElement;
+      const activeTag = activeElement?.tagName?.toLowerCase();
+      if (activeTag === "input" || activeTag === "textarea" || activeElement?.isContentEditable) return;
 
       const prev = document.querySelector("[data-prev-slide]");
       const next = document.querySelector("[data-next-slide]");
+      const key = event.key || "";
+      const code = event.code || "";
+      const isKey = (...values) => values.includes(key) || values.includes(code);
+      const isSpace = isKey(" ", "Space", "Spacebar");
+      const shouldGoPrev =
+        (event.shiftKey && isSpace) ||
+        isKey(
+          "ArrowLeft",
+          "ArrowUp",
+          "PageUp",
+          "Backspace",
+          "MediaTrackPrevious",
+          "BrowserBack",
+          "p",
+          "P",
+          "KeyP"
+        );
+      const shouldGoNext =
+        (!event.shiftKey && isSpace) ||
+        isKey(
+          "ArrowRight",
+          "ArrowDown",
+          "PageDown",
+          "Enter",
+          "NumpadEnter",
+          "MediaTrackNext",
+          "BrowserForward",
+          "n",
+          "N",
+          "KeyN"
+        );
 
-      if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
+      if (shouldGoNext) {
         event.preventDefault();
         if (next) navigateTo(next.href);
+        return;
       }
 
-      if (event.key === "ArrowLeft" || event.key === "PageUp") {
+      if (shouldGoPrev) {
         event.preventDefault();
         if (prev) navigateTo(prev.href);
+        return;
       }
 
-      if (event.key.toLowerCase() === "f") {
+      if (key.toLowerCase() === "f") {
         event.preventDefault();
         document.documentElement.requestFullscreen?.();
       }
@@ -335,6 +400,7 @@
     renderSingleSlide();
     renderIndex();
     renderPrint();
+    fitVisualStages();
     updateSlideScale();
     window.addEventListener("resize", updateSlideScale);
     wireKeyboard();
