@@ -119,15 +119,18 @@
       `;
     }
 
+    const placeholderTitle = visual.title || ui.visualPlaceholder || deck.title;
+    const placeholderDescription = visual.description || ui.visualPlaceholderDescription || deck.description || "";
+
     return `
-      <div class="screenshot-placeholder" role="img" aria-label="${escapeHtml(visual.title)}">
+      <div class="screenshot-placeholder" role="img" aria-label="${escapeHtml(placeholderTitle)}">
         <div class="placeholder-toolbar">
           <span></span><span></span><span></span>
         </div>
         <div class="placeholder-body">
-          <span class="placeholder-kicker">Screenshot placeholder</span>
-          <strong>${escapeHtml(visual.title)}</strong>
-          <p>${escapeHtml(visual.description)}</p>
+          <span class="placeholder-kicker">${escapeHtml(ui.visualPlaceholder || "Interface preview")}</span>
+          <strong>${escapeHtml(placeholderTitle)}</strong>
+          <p>${escapeHtml(placeholderDescription)}</p>
         </div>
       </div>
     `;
@@ -234,12 +237,12 @@
 
     if (prev) {
       prev.href = index > 0 ? `${String(index).padStart(2, "0")}.html` : rootHref("index.html");
-      prev.setAttribute("aria-label", index > 0 ? "Previous slide" : ui.home || "Index");
+      prev.setAttribute("aria-label", index > 0 ? ui.previous || "Previous section" : ui.home || "Contents");
     }
 
     if (next) {
       next.href = index < total - 1 ? `${String(index + 2).padStart(2, "0")}.html` : rootHref("print.html");
-      next.setAttribute("aria-label", index < total - 1 ? "Next slide" : ui.openPrint || "PDF export");
+      next.setAttribute("aria-label", index < total - 1 ? ui.next || "Next section" : ui.openPrint || "Open PDF");
     }
 
     if (progress) {
