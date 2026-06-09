@@ -9,6 +9,7 @@
   const total = deck.slides.length;
   const assetRoot = body.dataset.assetRoot || "";
   const localeRoot = body.dataset.localeRoot || "";
+  let isTransitioning = false;
 
   document.documentElement.lang = deck.lang || requestedLanguage;
 
@@ -32,6 +33,24 @@
   };
 
   const rootHref = (file) => `${localeRoot}${file}`;
+
+  const prefersReducedMotion = () =>
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches || false;
+
+  const navigateTo = (url) => {
+    if (!url || isTransitioning) return;
+    isTransitioning = true;
+
+    if (!body.classList.contains("single-slide") || prefersReducedMotion()) {
+      window.location.href = url;
+      return;
+    }
+
+    body.classList.add("is-exiting");
+    window.setTimeout(() => {
+      window.location.href = url;
+    }, 220);
+  };
 
   const renderBullets = (bullets) => {
     if (!bullets || !bullets.length) return "";
@@ -89,8 +108,9 @@
     if (!visual) return "";
 
     if (visual.kind === "image") {
+      const displayClass = visual.display ? `visual-display-${escapeHtml(visual.display)}` : "";
       return `
-        <figure class="visual-figure ${visual.display === "screenshot" ? "screenshot-figure" : ""}">
+        <figure class="visual-figure ${visual.display === "screenshot" ? "screenshot-figure" : ""} ${displayClass}">
           <img src="${escapeHtml(resolveAsset(visual.src))}" alt="${escapeHtml(visual.alt || "")}" />
           ${visual.caption ? `<figcaption>${escapeHtml(visual.caption)}</figcaption>` : ""}
         </figure>
@@ -116,11 +136,26 @@
     const slideNumber = String(number).padStart(2, "0");
     const hasFeatureGrid = Boolean(slide.features && slide.features.length);
     const hasSteps = Boolean(slide.steps && slide.steps.length);
+    const visual = slide.visual || {};
+    const hasScreenshot = visual.display === "screenshot";
+    const hasImage = visual.kind === "image";
+    const hasIllustration = hasImage && !hasScreenshot;
+    const hasHeroVisual = slide.layout === "cover" || slide.layout === "closing";
+    const slideClasses = [
+      "slide-frame",
+      `slide-layout-${escapeHtml(slide.layout)}`,
+      `tone-${escapeHtml(slide.tone)}`,
+      hasFeatureGrid ? "slide-has-features" : "",
+      hasSteps ? "slide-has-steps" : "",
+      hasScreenshot ? "slide-has-screenshot" : "",
+      hasIllustration ? "slide-has-illustration" : "",
+      hasHeroVisual ? "slide-hero-visual" : "",
+    ]
+      .filter(Boolean)
+      .join(" ");
 
     return `
-      <article class="slide-frame slide-layout-${escapeHtml(slide.layout)} tone-${escapeHtml(
-        slide.tone
-      )}" data-slide="${slideNumber}">
+      <article class="${slideClasses}" data-slide="${slideNumber}">
         <header class="slide-header">
           <span>${escapeHtml(slide.eyebrow)}</span>
           <span>${slideNumber} / ${String(total).padStart(2, "0")}</span>
@@ -135,7 +170,9 @@
             ${renderChips(slide.chips)}
           </div>
 
-          <aside class="slide-visual ${hasFeatureGrid ? "with-features" : ""}">
+          <aside class="slide-visual ${hasFeatureGrid ? "with-features" : ""} ${
+            hasScreenshot ? "with-screenshot" : hasIllustration ? "with-illustration" : ""
+          }">
             ${hasFeatureGrid ? renderFeatures(slide.features) : renderVisual(slide.visual)}
           </aside>
         </section>
@@ -259,18 +296,31 @@
 
       if (event.key === "ArrowRight" || event.key === "PageDown" || event.key === " ") {
         event.preventDefault();
-        if (next) window.location.href = next.href;
+        if (next) navigateTo(next.href);
       }
 
       if (event.key === "ArrowLeft" || event.key === "PageUp") {
         event.preventDefault();
-        if (prev) window.location.href = prev.href;
+        if (prev) navigateTo(prev.href);
       }
 
       if (event.key.toLowerCase() === "f") {
         event.preventDefault();
         document.documentElement.requestFullscreen?.();
       }
+    });
+  };
+
+  const wireSlideLinks = () => {
+    if (!body.classList.contains("single-slide")) return;
+
+    document.querySelectorAll("[data-prev-slide], [data-next-slide], [data-nav-index]").forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (event.defaultPrevented || event.button !== 0) return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+        event.preventDefault();
+        navigateTo(link.href);
+      });
     });
   };
 
@@ -288,6 +338,7 @@
     updateSlideScale();
     window.addEventListener("resize", updateSlideScale);
     wireKeyboard();
+    wireSlideLinks();
     wirePrintButton();
   });
 })();
